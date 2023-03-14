@@ -1,0 +1,9 @@
+@use 'reset';
+@import 'variables';
+
+body {
+    margin: 0;
+    font-family: $font-stack-primary;
+    color: $color-white;
+    background-color: $color-background;
+}

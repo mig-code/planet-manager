@@ -1,16 +1,13 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from '../../store/store';
+import { render, screen } from '@testing-library/react';
+
 import App from './App';
 
-test('renders learn react link', () => {
-    const { getByText } = render(
-        <Provider store={store}>
-            <App />
-        </Provider>
-    );
+describe('When render App component', () => {
+    test('It should rednder the title', () => {
+        render(<App></App>);
 
-    // eslint-disable-next-line testing-library/prefer-screen-queries
-    expect(getByText(/learn/i)).toBeInTheDocument();
+        const title = screen.getByText('Planet Manager');
+        expect(title).toBeInTheDocument();
+    });
 });
