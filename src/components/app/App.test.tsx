@@ -1,13 +1,19 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-
 import App from './App';
 
+jest.mock('../layout/layout', () => {
+    return {
+        Layout: () => {
+            return <div>Layout</div>;
+        },
+    };
+});
 describe('When render App component', () => {
-    test('It should rednder the title', () => {
+    test('It should render the Layout component', () => {
         render(<App></App>);
 
-        const title = screen.getByText('Planet Manager');
-        expect(title).toBeInTheDocument();
+        const layoutMock = screen.getByText('Layout');
+        expect(layoutMock).toBeInTheDocument();
     });
 });

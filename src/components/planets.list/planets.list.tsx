@@ -1,9 +1,9 @@
 import { PlanetCard } from '../planet.card/planet.card';
 
-export function PlanetList() {
+export function PlanetsList() {
     return (
         <>
-            <h1>Planet List</h1>
+            <h1>Planets List</h1>
             <PlanetCard></PlanetCard>
         </>
     );

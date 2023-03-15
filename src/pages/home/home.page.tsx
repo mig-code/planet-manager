@@ -1,9 +1,9 @@
-import { PlanetList } from '../../components/planet.list/planet.list';
+import { PlanetsList } from '../../components/planets.list/planets.list';
 
 export function HomePage() {
     return (
         <div>
-            <PlanetList></PlanetList>
+            <PlanetsList></PlanetsList>
         </div>
     );
 }
