@@ -1,0 +1,31 @@
+@import '../../sass/variables';
+
+.planet-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    margin: 1rem 0.5rem;
+    padding: 1rem;
+    width: 200px;
+    height: 300px;
+
+    border-radius: 10px;
+    border: 1px solid $color-secondary;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &__info {
+        color: $color-secondary;
+    }
+}
+
+@media (max-width: 768px) {
+    .planet-card {
+        width: 150px;
+        height: 262.5px;
+    }
+}

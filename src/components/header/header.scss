@@ -1,0 +1,7 @@
+@import '../../sass/variables';
+
+.app-header {
+    padding: 1rem;
+    border-bottom: $color-grey-light-1 1px solid;
+    background-color: $color-secondary;
+}

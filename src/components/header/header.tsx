@@ -1,11 +1,11 @@
+import React from 'react';
+import './header.scss';
+
 export function Header() {
     return (
-        <header className="App-header">
+        <header className="app-header">
             <h1>Planet Manager</h1>
-            <p>
-                The ultimate Star Wars app for managing your own planet,
-                building infrastructure, and defending against invaders.
-            </p>
+            
         </header>
     );
 }
