@@ -1,13 +1,13 @@
 import { PlanetInfo } from '../types/planet';
 
-type ApiDataResponse = {
+export type ApiDataResponse = {
     data: {
         allPlanets: {
             planets: Array<ApiPlanetInfo>;
         };
     };
 };
-type ApiPlanetInfo = {
+export type ApiPlanetInfo = {
     id: string;
     name: string;
     population: string;
