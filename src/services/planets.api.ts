@@ -1,22 +1,23 @@
 import { planetsAdapter } from './../adapters/planet.adapter';
+import { consoleDebug } from '../utils/debug';
 
 const url = process.env.REACT_APP_PLANETS_API_URL as string;
 
 const allPlanetsQuery = `query {
   allPlanets {
-    planets {
-      population
-      terrains
-      id
-      diameter
-      climates
-      name
-      residentConnection {
-        residents {
-          name
-        }
-      }
-    }
+  planets {
+  population
+  terrains
+  id
+  diameter
+  climates
+  name
+  residentConnection {
+  residents {
+  name
+  }
+  }
+  }
   }
 }`;
 
@@ -32,6 +33,6 @@ export const getAllPlanets = async () => {
         const result = await resp.json();
         return planetsAdapter(result);
     } catch (error) {
-        console.log(error);
+        consoleDebug(error);
     }
 };
