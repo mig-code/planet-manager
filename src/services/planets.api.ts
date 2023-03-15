@@ -4,21 +4,21 @@ import { consoleDebug } from '../utils/debug';
 const url = process.env.REACT_APP_PLANETS_API_URL as string;
 
 const allPlanetsQuery = `query {
-  allPlanets {
-  planets {
-  population
-  terrains
-  id
-  diameter
-  climates
-  name
-  residentConnection {
-  residents {
-  name
-  }
-  }
-  }
-  }
+    allPlanets {
+    planets {
+    population
+    terrains
+    id
+    diameter
+    climates
+    name
+    residentConnection {
+    residents {
+    name
+    }
+    }
+    }
+    }
 }`;
 
 export const getAllPlanets = async () => {
