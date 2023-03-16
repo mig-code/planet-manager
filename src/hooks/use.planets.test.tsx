@@ -10,6 +10,14 @@ import * as debug from '../utils/debug';
 
 jest.mock('../utils/debug');
 
+const mockPersistDataLocalStorage = jest.fn();
+const mockGetDataLocalStorage = jest.fn();
+
+jest.mock('../services/local.storage', () => ({
+    persistDataLocalStorage: () => mockPersistDataLocalStorage(),
+    getDataLocalStorage: () => mockGetDataLocalStorage(),
+}));
+
 const mockGetAllPlanets = jest.fn();
 jest.mock('../services/planets.api', () => ({
     getAllPlanets: () => mockGetAllPlanets(),
@@ -43,6 +51,7 @@ describe(`Given usePlanets custom hook and render with a virtual component`, () 
         const spyConsole = jest.spyOn(debug, 'consoleDebug');
         beforeEach(() => {
             mockGetAllPlanets.mockRejectedValue(new Error('error test'));
+            mockGetDataLocalStorage.mockReturnValue([]);
         });
         test('Then its function getAllPlanets should be called and recieved an Error', async () => {
             await act(async () => {
@@ -69,11 +78,12 @@ describe(`Given usePlanets custom hook and render with a virtual component`, () 
         beforeEach(() => {
             mockGetAllPlanets.mockResolvedValue([
                 {
-                    name: 'planet name test',
+                    name: 'planet name from api',
                 },
             ]);
+            mockGetDataLocalStorage.mockReturnValue([]);
         });
-        test('Then its function getAllPlanets should be called', async () => {
+        test('Then its function getAllPlanets should be called and update the store', async () => {
             await act(async () => {
                 userEvent.click(buttons[0]);
             });
@@ -84,12 +94,42 @@ describe(`Given usePlanets custom hook and render with a virtual component`, () 
 
             await waitFor(() => {
                 expect(store.getState().planets.allPlanets[0]?.name).toBe(
-                    'planet name test'
+                    'planet name from api'
                 );
             });
 
             await waitFor(() => {
-                const planetName = screen.getByText('planet name test');
+                const planetName = screen.getByText('planet name from api');
+                expect(planetName).toBeInTheDocument();
+            });
+        });
+    });
+
+    describe(`When the data is already in the local storage`, () => {
+        beforeEach(() => {
+            mockGetDataLocalStorage.mockReturnValue([
+                {
+                    name: 'planet name from local storage',
+                },
+            ]);
+        });
+        test('Then the store its updated with local storage data', async () => {
+            await act(async () => {
+                userEvent.click(buttons[0]);
+            });
+
+            await waitFor(() => {
+                expect(mockGetAllPlanets).not.toHaveBeenCalled();
+            });
+
+            await waitFor(() => {
+                expect(mockGetDataLocalStorage).toHaveBeenCalled();
+            });
+
+            await waitFor(() => {
+                const planetName = screen.getByText(
+                    'planet name from local storage'
+                );
                 expect(planetName).toBeInTheDocument();
             });
         });
