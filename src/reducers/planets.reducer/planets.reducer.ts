@@ -15,6 +15,11 @@ export const planetsReducer = createReducer(initialState, (builder) => {
     builder.addCase(ac.loadAllActionCreatorPlanets, (state, action) => {
         state.allPlanets = action.payload;
     });
+    builder.addCase(ac.removePlanetActionCreatorPlanets, (state, action) => {
+        state.allPlanets = state.allPlanets.filter(
+            (planet) => planet.id !== action.payload
+        );
+    });
 
     builder.addDefaultCase((state) => state);
 });
