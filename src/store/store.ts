@@ -1,7 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { planetsReducer } from '../reducers/planets.reducer/planets.reducer';
 
 export const store = configureStore({
-    reducer: {},
+    reducer: {
+        planets: planetsReducer,
+    },
 });
 
 export type AppDispatch = typeof store.dispatch;

@@ -1,16 +1,19 @@
-import { useCallback, useEffect, useState } from 'react';
-import { PlanetsList } from '../../components/planets.list/planets.list';
+import { useCallback, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../store/store';
+import * as ac from '../../../src/reducers/action.creator';
 import { getAllPlanets } from '../../services/planets.api';
-import { PlanetInfo } from '../../types/planet';
+import { PlanetsList } from '../../components/planets.list/planets.list';
 
 export function HomePage() {
-    const [planets, setPlanets] = useState<Array<PlanetInfo>>([]);
+    const planets = useSelector((state: RootState) => state.planets.allPlanets);
+    const dispatcher = useDispatch();
     console.log(planets);
 
     const handleLoadPlanets = useCallback(async () => {
         const planets = await getAllPlanets();
-        if (planets) setPlanets(planets);
-    }, []);
+        if (planets) dispatcher(ac.loadAllActionCreatorPlanets(planets));
+    }, [dispatcher]);
 
     useEffect(() => {
         handleLoadPlanets();
