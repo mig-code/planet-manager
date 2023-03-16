@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { consoleDebug } from '../utils/debug';
 
 import * as ac from '../reducers/action.creator';
@@ -10,21 +10,26 @@ import {
     getDataLocalStorage,
     persistDataLocalStorage,
 } from '../services/local.storage';
+import { RootState } from '../store/store';
 
 export interface UsePlanetsStructure {
     handleLoadAllPlanets: () => Promise<void>;
+    handleRemovePlanet: (id: string) => void;
 }
 
 export function usePlanets(): UsePlanetsStructure {
     const dispatcher = useDispatch();
     const allPlanetsStorageKey = 'AllPlanets';
+    const allPlanets = useSelector(
+        (state: RootState) => state.planets.allPlanets
+    );
 
     const handleLoadAllPlanets = useCallback(async () => {
         const localStoragePlanetData = getDataLocalStorage(
             allPlanetsStorageKey
         ) as Array<PlanetInfo>;
 
-        if (localStoragePlanetData.length > 0) {
+        if (localStoragePlanetData.length > 0 ) {
             dispatcher(ac.loadAllActionCreatorPlanets(localStoragePlanetData));
             return;
         }
@@ -38,11 +43,22 @@ export function usePlanets(): UsePlanetsStructure {
         }
     }, [dispatcher]);
 
+    const handleRemovePlanet = useCallback(
+        (id: PlanetInfo['id']) => {
+            console.log('handleRemovePlanet', id);
+            dispatcher(ac.removePlanetActionCreatorPlanets(id));
+            const newPlanets = allPlanets.filter((planet) => planet.id !== id);
+            persistDataLocalStorage(allPlanetsStorageKey, newPlanets);
+        },
+        [dispatcher, allPlanets]
+    );
+
     const handleError = (error: Error) => {
         consoleDebug(error.message);
     };
 
     return {
         handleLoadAllPlanets,
+        handleRemovePlanet,
     };
 }

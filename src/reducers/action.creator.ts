@@ -5,3 +5,7 @@ import { actionTypesPlanets } from './action.types';
 export const loadAllActionCreatorPlanets = createAction<Array<PlanetInfo>>(
     actionTypesPlanets.loadAll
 );
+
+export const removePlanetActionCreatorPlanets = createAction<PlanetInfo['id']>(
+    actionTypesPlanets.removePlanet
+);
