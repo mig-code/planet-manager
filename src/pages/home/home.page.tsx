@@ -25,6 +25,7 @@ export function HomePage() {
                 The ultimate Star Wars app for managing your own planet,
                 building infrastructure, and defending against invaders.
             </p>
+
             <PlanetsList></PlanetsList>
         </>
     );
