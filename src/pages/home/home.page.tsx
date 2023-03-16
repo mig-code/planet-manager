@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import { PlanetsList } from '../../components/planets.list/planets.list';
-import { usePlanets } from '../../hooks/usePlanets';
+import { usePlanets } from '../../hooks/use.planets';
 
 export function HomePage() {
     const { handleLoadAllPlanets } = usePlanets();

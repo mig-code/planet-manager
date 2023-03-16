@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { HomePage } from './home.page';
 import { Provider } from 'react-redux';
 import { store } from '../../store/store';
-import { usePlanets } from '../../hooks/usePlanets';
+import { usePlanets } from '../../hooks/use.planets';
 
 jest.mock('../../hooks/usePlanets');
 
