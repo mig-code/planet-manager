@@ -16,12 +16,32 @@
     border-radius: 10px;
     border: 1px solid $color-secondary;
 
-    &:hover {
-        cursor: pointer;
-    }
-
     &__info {
         color: $color-secondary;
+        font-size: 0.8rem;
+    }
+    &__actions {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+
+        button {
+            margin: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 0.3rem;
+            border-radius: 5px;
+            border: 1px solid $color-secondary;
+            background-color: $color-white;
+            color: $color-secondary;
+            &:hover {
+                cursor: pointer;
+                background-color: $color-secondary;
+                color: $color-white;
+            }
+        }
     }
 }
 
