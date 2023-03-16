@@ -12,6 +12,11 @@ export function PlanetCard({ planet }: { planet: PlanetInfo }) {
                 <p>Terrain {planet.terrains.map((terrain) => `${terrain} `)}</p>
                 <p>Population {planet.population}</p>
             </div>
+            <div className="planet-card__actions">
+                <button>View</button>
+                <button>Edit</button>
+                <button>Destroy</button>
+            </div>
         </div>
     );
 }
