@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from '../../store/store';
 import { usePlanets } from '../../hooks/use.planets';
 
-jest.mock('../../hooks/usePlanets');
+jest.mock('../../hooks/use.planets');
 
 describe('When render Home page component', () => {
     test('It should render the PlanetsList component', () => {
