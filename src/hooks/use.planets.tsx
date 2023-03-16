@@ -45,7 +45,7 @@ export function usePlanets(): UsePlanetsStructure {
 
     const handleRemovePlanet = useCallback(
         (id: PlanetInfo['id']) => {
-            console.log('handleRemovePlanet', id);
+           
             dispatcher(ac.removePlanetActionCreatorPlanets(id));
             const newPlanets = allPlanets.filter((planet) => planet.id !== id);
             persistDataLocalStorage(allPlanetsStorageKey, newPlanets);

@@ -7,6 +7,8 @@ import { RootState, store } from '../store/store';
 import { usePlanets } from './use.planets';
 
 import * as debug from '../utils/debug';
+import { mockPlanet1 } from '../mocks/planets.mocks';
+
 
 jest.mock('../utils/debug');
 
@@ -27,13 +29,18 @@ describe(`Given usePlanets custom hook and render with a virtual component`, () 
     let TestComponent: () => JSX.Element;
     let buttons: Array<HTMLElement>;
 
+    const mockPlanet = mockPlanet1;
+
     beforeEach(() => {
         TestComponent = () => {
-            const { handleLoadAllPlanets } = usePlanets();
+            const { handleLoadAllPlanets, handleRemovePlanet } = usePlanets();
             const { planets } = useSelector((state: RootState) => state);
             return (
                 <>
                     <button onClick={handleLoadAllPlanets}>Load Planets</button>
+                    <button onClick={() => handleRemovePlanet(mockPlanet.id)}>
+                        Remove
+                    </button>
                     <div>{planets.allPlanets[0]?.name}</div>
                 </>
             );
@@ -45,6 +52,9 @@ describe(`Given usePlanets custom hook and render with a virtual component`, () 
             </Provider>
         );
         buttons = screen.getAllByRole('button');
+    });
+    afterEach(() => {
+        jest.clearAllMocks();
     });
 
     describe(`When load planets is not successful`, () => {
@@ -99,6 +109,10 @@ describe(`Given usePlanets custom hook and render with a virtual component`, () 
             });
 
             await waitFor(() => {
+                expect(mockPersistDataLocalStorage).toHaveBeenCalled();
+            });
+
+            await waitFor(() => {
                 const planetName = screen.getByText('planet name from api');
                 expect(planetName).toBeInTheDocument();
             });
@@ -131,6 +145,30 @@ describe(`Given usePlanets custom hook and render with a virtual component`, () 
                     'planet name from local storage'
                 );
                 expect(planetName).toBeInTheDocument();
+            });
+        });
+    });
+    describe(`When remove planet is called`, () => {
+        beforeEach(() => {
+            mockGetDataLocalStorage.mockReturnValue([mockPlanet]);
+        });
+        test('Then the store its updated with local storage data', async () => {
+            await act(async () => {
+                userEvent.click(buttons[0]);
+            });
+
+            await act(async () => {
+                userEvent.click(buttons[1]);
+            });
+
+            await waitFor(() => {
+                expect(mockPersistDataLocalStorage).toHaveBeenCalled();
+            });
+
+            await waitFor(() => {
+                expect(store.getState().planets.allPlanets[0]?.name).toBe(
+                    undefined
+                );
             });
         });
     });
