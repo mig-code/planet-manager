@@ -14,11 +14,12 @@ export function PlanetCard({
     const dispatcher = useDispatch();
 
     const handleViewDetailsClick = () => {
-        dispatcher(ac.setCurrentPlanetActionCreatorPlanets(planet));
+        dispatcher(ac.setCurrentPlanetDetailsActionCreatorPlanets(planet));
         dispatcher(ac.openDetailsModalActionCreatorModals());
     };
     const handleEditClick = () => {
-        dispatcher(ac.setCurrentPlanetActionCreatorPlanets(planet));
+        dispatcher(ac.setCurrentPlanetEditableActionCreatorPlanets(planet));
+        console.log('planet', planet);
         dispatcher(ac.openPlanetFormModalActionCreatorModals());
     };
 

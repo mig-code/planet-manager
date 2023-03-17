@@ -9,7 +9,7 @@ export function PlanetFormModal() {
     const dispatcher = useDispatch();
 
     const currentPlanet = useSelector(
-        (state: RootState) => state.planets.currentPlanet
+        (state: RootState) => state.planets.currentPlanetEditable
     );
     const isPlanetFormModalOpen = useSelector(
         (state: RootState) => state.modals.isPlanetFormModalOpen

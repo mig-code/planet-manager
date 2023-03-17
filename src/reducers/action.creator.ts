@@ -12,8 +12,13 @@ export const removePlanetActionCreatorPlanets = createAction<PlanetInfo['id']>(
     actionTypesPlanets.removePlanet
 );
 
-export const setCurrentPlanetActionCreatorPlanets =
-    createAction<PlanetInfo | null>(actionTypesPlanets.setCurrentPlanet);
+export const setCurrentPlanetDetailsActionCreatorPlanets =
+    createAction<PlanetInfo | null>(actionTypesPlanets.setCurrentDetailsPlanet);
+
+export const setCurrentPlanetEditableActionCreatorPlanets =
+    createAction<PlanetInfo | null>(
+        actionTypesPlanets.setCurrentEditablePlanet
+    );
 
 // Modals reducer action creators
 

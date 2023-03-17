@@ -5,12 +5,14 @@ import * as ac from '../action.creator';
 
 export type PlanetsState = {
     allPlanets: Array<PlanetInfo>;
-    currentPlanet: PlanetInfo | null;
+    currentPlanetDetails: PlanetInfo | null;
+    currentPlanetEditable: PlanetInfo | null;
 };
 
 const initialState: PlanetsState = {
     allPlanets: [],
-    currentPlanet: null,
+    currentPlanetDetails: null,
+    currentPlanetEditable: null,
 };
 
 export const planetsReducer = createReducer(initialState, (builder) => {
@@ -23,9 +25,15 @@ export const planetsReducer = createReducer(initialState, (builder) => {
         );
     });
     builder.addCase(
-        ac.setCurrentPlanetActionCreatorPlanets,
+        ac.setCurrentPlanetDetailsActionCreatorPlanets,
         (state, action) => {
-            state.currentPlanet = action.payload;
+            state.currentPlanetDetails = action.payload;
+        }
+    );
+    builder.addCase(
+        ac.setCurrentPlanetEditableActionCreatorPlanets,
+        (state, action) => {
+            state.currentPlanetEditable = action.payload;
         }
     );
 

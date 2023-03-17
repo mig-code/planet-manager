@@ -7,7 +7,7 @@ export function Header() {
     const dispatcher = useDispatch();
 
     const handleAddClick = () => {
-        dispatcher(ac.setCurrentPlanetActionCreatorPlanets(null));
+        dispatcher(ac.setCurrentPlanetEditableActionCreatorPlanets(null));
         dispatcher(ac.openPlanetFormModalActionCreatorModals());
     };
     return (

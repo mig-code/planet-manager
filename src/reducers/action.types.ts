@@ -1,8 +1,8 @@
 export const actionTypesPlanets = {
     loadAll: 'planets@loadAll',
     removePlanet: 'planets@removePlanet',
-    setCurrentPlanet: 'planets@setCurrentPlanet',
-   
+    setCurrentDetailsPlanet: 'planets@setCurrentPlanetDetails',
+    setCurrentEditablePlanet: 'planets@setCurrentPlanetEditable',
 };
 
 export const actionTypesModals = {

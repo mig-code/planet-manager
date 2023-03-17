@@ -9,7 +9,8 @@ import { modalsReducer } from '../reducers/modals.reducer/modals.reducer';
 
 export const mockPlanetsState: PlanetsState = {
     allPlanets: [mockPlanet1],
-    currentPlanet: null,
+    currentPlanetDetails: null,
+    currentPlanetEditable: null,
 };
 export const preloadedPlanetsState: Partial<RootState> = {
     planets: mockPlanetsState,
@@ -26,7 +27,8 @@ export const mockPlanetsStore = configureStore({
 
 export const mockPlanetStateWithCurrentPlanet: PlanetsState = {
     allPlanets: [mockPlanet1],
-    currentPlanet: mockPlanet1,
+    currentPlanetDetails: mockPlanet1,
+    currentPlanetEditable: null,
 };
 
 export const preloadedStateDetailsModalTest: Partial<RootState> = {
