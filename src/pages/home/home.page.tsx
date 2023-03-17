@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Modal } from '../../components/details.modal/details.modal';
 
 import { PlanetsList } from '../../components/planets.list/planets.list';
 import { usePlanets } from '../../hooks/use.planets';
@@ -19,6 +20,7 @@ export function HomePage() {
             </p>
 
             <PlanetsList></PlanetsList>
+            <Modal></Modal>
         </>
     );
 }

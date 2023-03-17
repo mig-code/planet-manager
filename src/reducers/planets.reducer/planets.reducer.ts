@@ -5,10 +5,12 @@ import * as ac from '../action.creator';
 
 export type PlanetsState = {
     allPlanets: Array<PlanetInfo>;
+    currentPlanet: PlanetInfo | null;
 };
 
 const initialState: PlanetsState = {
     allPlanets: [],
+    currentPlanet: null,
 };
 
 export const planetsReducer = createReducer(initialState, (builder) => {
@@ -20,6 +22,12 @@ export const planetsReducer = createReducer(initialState, (builder) => {
             (planet) => planet.id !== action.payload
         );
     });
+    builder.addCase(
+        ac.setCurrentPlanetActionCreatorPlanets,
+        (state, action) => {
+            state.currentPlanet = action.payload;
+        }
+    );
 
     builder.addDefaultCase((state) => state);
 });

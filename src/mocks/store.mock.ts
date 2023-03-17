@@ -8,6 +8,7 @@ import { RootState } from '../store/store';
 
 export const mockPlanetsState: PlanetsState = {
     allPlanets: [mockPlanet1],
+    currentPlanet: null,
 };
 export const preloadedPlanetsState: Partial<RootState> = {
     planets: mockPlanetsState,

@@ -1,6 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { PlanetInfo } from '../../types/planet';
 import './planet.card.scss';
+import * as ac from '../../reducers/action.creator';
+
 export function PlanetCard({
     planet,
     handleRemovePlanet,
@@ -8,8 +11,15 @@ export function PlanetCard({
     planet: PlanetInfo;
     handleRemovePlanet: (id: PlanetInfo['id']) => void;
 }) {
+    const dispatcher = useDispatch();
+
     const handleRemoveClick = () => {
         handleRemovePlanet(planet.id);
+    };
+
+    const handleViewClick = () => {
+        dispatcher(ac.setCurrentPlanetActionCreatorPlanets(planet));
+        dispatcher(ac.openDetailsModalActionCreatorModals());
     };
 
     return (
@@ -23,7 +33,7 @@ export function PlanetCard({
                 <p>Population {planet.population}</p>
             </div>
             <div className="planet-card__actions">
-                <button>View</button>
+                <button onClick={handleViewClick}>View</button>
                 <button>Edit</button>
                 <button onClick={handleRemoveClick}>Destroy</button>
             </div>
