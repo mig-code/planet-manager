@@ -21,6 +21,13 @@ export function PlanetFormModal() {
 
     const handleInputChange = (ev: SyntheticEvent) => {
         const element = ev.target as HTMLFormElement;
+        if (element.name === 'diameter' || element.name === 'population') {
+            setPlanetForm({
+                ...planetForm,
+                [element.name]: parseFloat(element.value),
+            });
+            return;
+        }
         setPlanetForm({
             ...planetForm,
             [element.name]: element.value,
@@ -32,6 +39,27 @@ export function PlanetFormModal() {
     };
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        if (currentPlanet) {
+            dispatcher(
+                ac.updatePlanetActionCreatorPlanets({
+                    ...currentPlanet,
+                    ...planetForm,
+                })
+            );
+        } else {
+            const planetFormWithId: PlanetInfo = {
+                name: planetForm.name as string,
+                diameter: planetForm.diameter as number,
+                population: planetForm.population as number,
+                id: Math.random().toString(36).substr(2, 9),
+
+                climates: [],
+                residents: [],
+                terrains: ['unknown'],
+            };
+            dispatcher(ac.addPlanetActionCreatorPlanets(planetFormWithId));
+        }
+        handleCloseModal();
     };
 
     useEffect(() => {
@@ -61,6 +89,7 @@ export function PlanetFormModal() {
                                     name="name"
                                     defaultValue={currentPlanet?.name}
                                     onInput={handleInputChange}
+                                    required
                                 />
                             </div>
                             <div>
@@ -72,6 +101,7 @@ export function PlanetFormModal() {
                                     min={0}
                                     defaultValue={currentPlanet?.diameter}
                                     onInput={handleInputChange}
+                                    required
                                 />
                             </div>
 
@@ -84,6 +114,7 @@ export function PlanetFormModal() {
                                     defaultValue={currentPlanet?.population}
                                     min={0}
                                     onInput={handleInputChange}
+                                    required
                                 />
                             </div>
                             {currentPlanet ? (

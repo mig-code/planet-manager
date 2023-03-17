@@ -12,6 +12,14 @@ export const removePlanetActionCreatorPlanets = createAction<PlanetInfo['id']>(
     actionTypesPlanets.removePlanet
 );
 
+export const addPlanetActionCreatorPlanets = createAction<PlanetInfo>(
+    actionTypesPlanets.addPlanet
+);
+
+export const updatePlanetActionCreatorPlanets = createAction<PlanetInfo>(
+    actionTypesPlanets.updatePlanet
+);
+
 export const setCurrentPlanetDetailsActionCreatorPlanets =
     createAction<PlanetInfo | null>(actionTypesPlanets.setCurrentDetailsPlanet);
 

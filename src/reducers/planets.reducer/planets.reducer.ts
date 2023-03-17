@@ -24,6 +24,19 @@ export const planetsReducer = createReducer(initialState, (builder) => {
             (planet) => planet.id !== action.payload
         );
     });
+    builder.addCase(ac.addPlanetActionCreatorPlanets, (state, action) => {
+        state.allPlanets = [...state.allPlanets, action.payload];
+    });
+
+    builder.addCase(ac.updatePlanetActionCreatorPlanets, (state, action) => {
+        state.allPlanets = state.allPlanets.map((planet) => {
+            if (planet.id === action.payload.id) {
+                return action.payload;
+            }
+            return planet;
+        });
+    });
+
     builder.addCase(
         ac.setCurrentPlanetDetailsActionCreatorPlanets,
         (state, action) => {

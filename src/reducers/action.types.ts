@@ -1,6 +1,8 @@
 export const actionTypesPlanets = {
     loadAll: 'planets@loadAll',
     removePlanet: 'planets@removePlanet',
+    updatePlanet: 'planets@updatePlanet',
+    addPlanet: 'planets@addPlanet',
     setCurrentDetailsPlanet: 'planets@setCurrentPlanetDetails',
     setCurrentEditablePlanet: 'planets@setCurrentPlanetEditable',
 };
