@@ -10,7 +10,7 @@ export type ApiDataResponse = {
 export type ApiPlanetInfo = {
     id: string;
     name: string;
-    population: string;
+    population: number;
     terrains: Array<string>;
     climates: Array<string>;
     diameter: number;
