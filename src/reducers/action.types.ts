@@ -8,4 +8,6 @@ export const actionTypesPlanets = {
 export const actionTypesModals = {
     openDetailsModal: 'modals@openDetailsModal',
     closeDetailsModal: 'modals@closeDetailsModal',
+    openPlanetFormModal: 'modals@openPlanetFormModal',
+    closePlanetFormModal: 'modals@closePlanetFormModal',
 };

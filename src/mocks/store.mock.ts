@@ -33,6 +33,7 @@ export const preloadedStateDetailsModalTest: Partial<RootState> = {
     planets: mockPlanetStateWithCurrentPlanet,
     modals: {
         isDetailsModalOpen: true,
+        isPlanetFormModalOpen: false,
     },
 };
 
