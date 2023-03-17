@@ -13,10 +13,10 @@
     background-color: rgba(7, 5, 5, 0.544);
 
     &__content {
-        background-color: $color-white;
+        background-color: $color-white-light-1;
         margin: 40% auto;
         padding: 1rem;
-        border: 1px solid $color-grey-light-1;
+        border: 2px solid $color-background;
         width: 70%;
 
         border-radius: 15px;
@@ -25,7 +25,16 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
+    }
+    &__card-info {
+        color: $color-secondary;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        padding: 1rem;
     }
     &__title {
         font-size: 1.5rem;
@@ -54,8 +63,8 @@
 @media (min-width: 768px) {
     .details-modal {
         &__content {
-            margin: 15% auto;
-            width: 40%;
+            margin: 10% auto;
+            width: 30%;
         }
     }
 }

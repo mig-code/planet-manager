@@ -17,7 +17,7 @@ export function PlanetCard({
         handleRemovePlanet(planet.id);
     };
 
-    const handleViewClick = () => {
+    const handleViewDetailsClick = () => {
         dispatcher(ac.setCurrentPlanetActionCreatorPlanets(planet));
         dispatcher(ac.openDetailsModalActionCreatorModals());
     };
@@ -33,7 +33,7 @@ export function PlanetCard({
                 <p>Population {planet.population}</p>
             </div>
             <div className="planet-card__actions">
-                <button onClick={handleViewClick}>View</button>
+                <button onClick={handleViewDetailsClick}>View</button>
                 <button>Edit</button>
                 <button onClick={handleRemoveClick}>Destroy</button>
             </div>

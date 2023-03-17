@@ -22,8 +22,10 @@ export function Modal() {
             {currentPlanet && isDetailsModalOpen && (
                 <div className="details-modal">
                     <div className="details-modal__content">
-                        <h2 className="details-modal__title">{currentPlanet.name}</h2>
-                        <div className="details-modal-card__info">
+                        <div className="details-modal__card-info">
+                            <h2 className="details-modal__title">
+                                {currentPlanet.name}
+                            </h2>
                             <p>Diameter {currentPlanet.diameter} km</p>
                             <p>
                                 Climate{' '}
