@@ -3,7 +3,7 @@ import { RootState } from '../../store/store';
 import * as ac from '../../reducers/action.creator';
 import './details.modal.scss';
 
-export function Modal() {
+export function DetailsModal() {
     const currentPlanet = useSelector(
         (state: RootState) => state.planets.currentPlanet
     );
@@ -40,7 +40,7 @@ export function Modal() {
                                 )}
                             </p>
                             <p>Population {currentPlanet.population}</p>
-                            Hanitants{' '}
+                            Habitants{' '}
                             {currentPlanet.residents.map(
                                 (resident) => `${resident} `
                             )}
