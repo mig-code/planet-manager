@@ -19,6 +19,7 @@ describe('Given the function planetReducer', () => {
             };
             state = {
                 allPlanets: [],
+                currentPlanet: null,
             };
         });
         test('Then the returned state should be the action payload', () => {
@@ -35,6 +36,7 @@ describe('Given the function planetReducer', () => {
             };
             state = {
                 allPlanets: mockPayload,
+                currentPlanet: null,
             };
         });
         test('Then the returned state should be the action payload', () => {
