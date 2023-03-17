@@ -35,16 +35,16 @@ export function PlanetFormModal() {
     };
 
     useEffect(() => {
-        const initialPlanetForm: Partial<PlanetInfo> = {
-            name: currentPlanet?.name || '',
-            diameter: currentPlanet?.diameter || 0,
-            climates: currentPlanet?.climates || [''],
-            terrains: currentPlanet?.terrains || [''],
-            population: currentPlanet?.population || 0,
-        };
+        if (isPlanetFormModalOpen) {
+            const initialPlanetForm: Partial<PlanetInfo> = {
+                name: currentPlanet?.name || '',
+                diameter: currentPlanet?.diameter || 0,
 
-        setPlanetForm(initialPlanetForm);
-    }, [currentPlanet]);
+                population: currentPlanet?.population || 0,
+            };
+            setPlanetForm(initialPlanetForm);
+        }
+    }, [currentPlanet, isPlanetFormModalOpen]);
 
     return (
         <>
@@ -74,30 +74,7 @@ export function PlanetFormModal() {
                                     onInput={handleInputChange}
                                 />
                             </div>
-                            <div>
-                                <label htmlFor="climate">Climate</label>
-                                <input
-                                    type="text"
-                                    id="climate"
-                                    name="climate"
-                                    defaultValue={currentPlanet?.climates.join(
-                                        ', '
-                                    )}
-                                    onInput={handleInputChange}
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="terrain">Terrain</label>
-                                <input
-                                    type="text"
-                                    id="terrain"
-                                    name="terrain"
-                                    defaultValue={currentPlanet?.terrains.join(
-                                        ', '
-                                    )}
-                                    onInput={handleInputChange}
-                                />
-                            </div>
+
                             <div>
                                 <label htmlFor="population">Population</label>
                                 <input

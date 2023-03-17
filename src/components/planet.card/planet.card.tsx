@@ -19,7 +19,6 @@ export function PlanetCard({
     };
     const handleEditClick = () => {
         dispatcher(ac.setCurrentPlanetEditableActionCreatorPlanets(planet));
-        console.log('planet', planet);
         dispatcher(ac.openPlanetFormModalActionCreatorModals());
     };
 
