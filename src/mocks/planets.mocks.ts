@@ -1,3 +1,4 @@
+import { ApiPlanetInfo, ApiDataResponse } from './../adapters/planet.adapter';
 import { PlanetInfo } from '../types/planet';
 export const mockPlanet1: PlanetInfo = {
     id: '1',
@@ -19,7 +20,7 @@ export const mockPlanet2: PlanetInfo = {
 };
 export const mockPlanets: Array<PlanetInfo> = [mockPlanet1, mockPlanet2];
 
-export const mockApiPlanet1 = {
+export const mockApiPlanet1: ApiPlanetInfo = {
     id: '1',
     name: 'Tatooine',
     population: 200000,
@@ -36,7 +37,7 @@ export const mockApiPlanet1 = {
     },
 };
 
-export const mockApiDataResponse = {
+export const mockApiDataResponse: ApiDataResponse = {
     data: {
         allPlanets: {
             planets: [mockApiPlanet1],
