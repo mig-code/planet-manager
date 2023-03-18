@@ -12,6 +12,12 @@ export const mockPlanetsState: PlanetsState = {
     currentPlanetDetails: null,
     currentPlanetEditable: null,
 };
+
+export const mockEmpyPlanetsState: PlanetsState = {
+    allPlanets: [],
+    currentPlanetDetails: null,
+    currentPlanetEditable: null,
+};
 export const preloadedPlanetsState: Partial<RootState> = {
     planets: mockPlanetsState,
 };

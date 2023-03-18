@@ -9,6 +9,16 @@ export const mockPlanet1: PlanetInfo = {
     diameter: 10465,
     residents: ['Luke Skywalker', 'C-3PO', 'R2-D2', 'Darth Vader'],
 };
+
+export const mockPlanet1Updated: PlanetInfo = {
+    id: '1',
+    name: 'Tatooine Updated',
+    population: 200000,
+    terrains: ['desert'],
+    climates: ['arid'],
+    diameter: 10465,
+    residents: ['Luke Skywalker', 'C-3PO', 'R2-D2', 'Darth Vader'],
+};
 export const mockPlanet2: PlanetInfo = {
     id: '2',
     name: 'Alderaan',

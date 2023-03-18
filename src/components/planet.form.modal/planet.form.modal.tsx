@@ -4,7 +4,7 @@ import * as ac from '../../reducers/action.creator';
 import './planet.form.modal.scss';
 import { PlanetInfo } from '../../types/planet';
 import { SyntheticEvent, useEffect, useState } from 'react';
-import CheckboxCollectionInput from '../checkbox.input/checkbox.input';
+import { CheckboxInput } from '../checkbox.input/checkbox.input';
 import { climates, residents, terrains } from '../../models/planets.models';
 
 export function PlanetFormModal() {
@@ -125,7 +125,7 @@ export function PlanetFormModal() {
 
                             <div>
                                 <p>TERRAINS</p>
-                                <CheckboxCollectionInput
+                                <CheckboxInput
                                     options={terrains}
                                     checkedOptions={currentPlanet?.terrains}
                                     onSelectionChange={(selectedOptions) => {
@@ -139,7 +139,7 @@ export function PlanetFormModal() {
 
                             <div>
                                 <p>CLIMATES</p>
-                                <CheckboxCollectionInput
+                                <CheckboxInput
                                     options={climates}
                                     checkedOptions={currentPlanet?.climates}
                                     onSelectionChange={(selectedOptions) => {
@@ -152,7 +152,7 @@ export function PlanetFormModal() {
                             </div>
                             <div>
                                 <p>RESIDENTS</p>
-                                <CheckboxCollectionInput
+                                <CheckboxInput
                                     options={residents}
                                     checkedOptions={currentPlanet?.residents}
                                     onSelectionChange={(selectedOptions) => {

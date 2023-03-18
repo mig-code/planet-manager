@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 import './checkbox.input.scss';
 
-function CheckboxCollectionInput({
+export function CheckboxInput({
     options,
     checkedOptions,
     onSelectionChange,
 }: {
     options: string[];
-    checkedOptions: string[] | undefined;
+    checkedOptions: string[] | null;
     onSelectionChange: (selectedOptions: string[]) => void;
 }) {
     const initialSelectedOptions = checkedOptions || [];
@@ -16,11 +16,12 @@ function CheckboxCollectionInput({
     const [selectedOptions, setSelectedOptions] = useState(
         initialSelectedOptions
     );
-  
 
     const handleCheckboxChange = (option: string) => {
         const updatedOptions = selectedOptions.includes(option)
-            ? selectedOptions.filter((selectedOption) => selectedOption !== option)
+            ? selectedOptions.filter(
+                  (selectedOption) => selectedOption !== option
+              )
             : [...selectedOptions, option];
         setSelectedOptions(updatedOptions);
         onSelectionChange(updatedOptions);
@@ -42,5 +43,3 @@ function CheckboxCollectionInput({
         </div>
     );
 }
-
-export default CheckboxCollectionInput;
