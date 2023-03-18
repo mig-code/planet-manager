@@ -34,6 +34,12 @@ export const mockPlanetsStore = configureStore({
 export const mockPlanetStateWithCurrentPlanet: PlanetsState = {
     allPlanets: [mockPlanet1],
     currentPlanetDetails: mockPlanet1,
+    currentPlanetEditable: mockPlanet1,
+};
+
+export const mockPlanetsStateEmptyCurrentPlanet: PlanetsState = {
+    allPlanets: [mockPlanet1],
+    currentPlanetDetails: null,
     currentPlanetEditable: null,
 };
 
@@ -51,4 +57,36 @@ export const mockStoreDetailsModalTest = configureStore({
         modals: modalsReducer,
     },
     preloadedState: preloadedStateDetailsModalTest,
+});
+
+export const preloadedStatePlanetFormModalTest: Partial<RootState> = {
+    planets: mockPlanetStateWithCurrentPlanet,
+    modals: {
+        isDetailsModalOpen: false,
+        isPlanetFormModalOpen: true,
+    },
+};
+
+export const mockStorePlanetFormModalTest = configureStore({
+    reducer: {
+        planets: planetsReducer,
+        modals: modalsReducer,
+    },
+    preloadedState: preloadedStatePlanetFormModalTest,
+});
+
+export const preloadedStateEmptyPlanetFormModalTest: Partial<RootState> = {
+    planets: mockPlanetsStateEmptyCurrentPlanet,
+    modals: {
+        isDetailsModalOpen: false,
+        isPlanetFormModalOpen: true,
+    },
+};
+
+export const mockStoreEmptyPlanetFormModalTest = configureStore({
+    reducer: {
+        planets: planetsReducer,
+        modals: modalsReducer,
+    },
+    preloadedState: preloadedStateEmptyPlanetFormModalTest,
 });

@@ -20,8 +20,8 @@ export function CheckboxInput({
     const handleCheckboxChange = (option: string) => {
         const updatedOptions = selectedOptions.includes(option)
             ? selectedOptions.filter(
-                (selectedOption) => selectedOption !== option
-            )
+                  (selectedOption) => selectedOption !== option
+              )
             : [...selectedOptions, option];
         setSelectedOptions(updatedOptions);
         onSelectionChange(updatedOptions);
@@ -36,6 +36,7 @@ export function CheckboxInput({
                         value={option}
                         checked={selectedOptions.includes(option)}
                         onChange={() => handleCheckboxChange(option)}
+                        data-testid={`${option}-checkbox`}
                     />
                     {option}
                 </label>
