@@ -31,7 +31,7 @@ export function usePlanets(): UsePlanetsStructure {
             allPlanetsStorageKey
         ) as Array<PlanetInfo>;
 
-        if (localStoragePlanetData.length > 0) {
+        if (localStoragePlanetData) {
             dispatcher(ac.loadAllActionCreatorPlanets(localStoragePlanetData));
             return;
         }
