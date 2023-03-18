@@ -4,6 +4,8 @@ import * as ac from '../../reducers/action.creator';
 import './planet.form.modal.scss';
 import { PlanetInfo } from '../../types/planet';
 import { SyntheticEvent, useEffect, useState } from 'react';
+import CheckboxCollectionInput from '../checkbox.input/checkbox.input';
+import { climates, residents, terrains } from '../../models/planets.models';
 
 export function PlanetFormModal() {
     const dispatcher = useDispatch();
@@ -16,8 +18,7 @@ export function PlanetFormModal() {
     );
 
     const [planetForm, setPlanetForm] = useState({} as Partial<PlanetInfo>);
-
-    console.log('planet form', planetForm);
+    console.log('planetForm', planetForm);
 
     const handleInputChange = (ev: SyntheticEvent) => {
         const element = ev.target as HTMLFormElement;
@@ -53,12 +54,13 @@ export function PlanetFormModal() {
                 population: planetForm.population as number,
                 id: Math.random().toString(36).substr(2, 9),
 
-                climates: [],
-                residents: [],
-                terrains: ['unknown'],
+                climates: planetForm.climates as string[],
+                residents: planetForm.residents as string[],
+                terrains: planetForm.terrains as string[],
             };
             dispatcher(ac.addPlanetActionCreatorPlanets(planetFormWithId));
         }
+
         handleCloseModal();
     };
 
@@ -67,8 +69,10 @@ export function PlanetFormModal() {
             const initialPlanetForm: Partial<PlanetInfo> = {
                 name: currentPlanet?.name || '',
                 diameter: currentPlanet?.diameter || 0,
-
                 population: currentPlanet?.population || 0,
+                terrains: currentPlanet?.terrains || [],
+                climates: currentPlanet?.climates || [],
+                residents: currentPlanet?.residents || [],
             };
             setPlanetForm(initialPlanetForm);
         }
@@ -92,6 +96,7 @@ export function PlanetFormModal() {
                                     required
                                 />
                             </div>
+
                             <div>
                                 <label htmlFor="diameter">Diameter</label>
                                 <input
@@ -117,6 +122,48 @@ export function PlanetFormModal() {
                                     required
                                 />
                             </div>
+
+                            <div>
+                                <p>TERRAINS</p>
+                                <CheckboxCollectionInput
+                                    options={terrains}
+                                    checkedOptions={currentPlanet?.terrains}
+                                    onSelectionChange={(selectedOptions) => {
+                                        setPlanetForm({
+                                            ...planetForm,
+                                            terrains: selectedOptions,
+                                        });
+                                    }}
+                                />
+                            </div>
+
+                            <div>
+                                <p>CLIMATES</p>
+                                <CheckboxCollectionInput
+                                    options={climates}
+                                    checkedOptions={currentPlanet?.climates}
+                                    onSelectionChange={(selectedOptions) => {
+                                        setPlanetForm({
+                                            ...planetForm,
+                                            climates: selectedOptions,
+                                        });
+                                    }}
+                                />
+                            </div>
+                            <div>
+                                <p>RESIDENTS</p>
+                                <CheckboxCollectionInput
+                                    options={residents}
+                                    checkedOptions={currentPlanet?.residents}
+                                    onSelectionChange={(selectedOptions) => {
+                                        setPlanetForm({
+                                            ...planetForm,
+                                            residents: selectedOptions,
+                                        });
+                                    }}
+                                />
+                            </div>
+
                             {currentPlanet ? (
                                 <button type="submit">Edit</button>
                             ) : (
