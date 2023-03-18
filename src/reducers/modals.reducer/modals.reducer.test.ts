@@ -13,6 +13,7 @@ describe('Given the function modalsReducer', () => {
             };
             state = {
                 isDetailsModalOpen: false,
+                isPlanetFormModalOpen: false,
             };
         });
         test('Then the returned state should be true', () => {
@@ -28,6 +29,7 @@ describe('Given the function modalsReducer', () => {
             };
             state = {
                 isDetailsModalOpen: true,
+                isPlanetFormModalOpen: false,
             };
         });
         test('Then the returned state should be false', () => {

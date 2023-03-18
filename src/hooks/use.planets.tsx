@@ -15,6 +15,8 @@ import { RootState } from '../store/store';
 export interface UsePlanetsStructure {
     handleLoadAllPlanets: () => Promise<void>;
     handleRemovePlanet: (id: string) => void;
+    handleAddPlanet: (planet: PlanetInfo) => void;
+    handleUpdatePlanet: (planet: PlanetInfo) => void;
 }
 
 export function usePlanets(): UsePlanetsStructure {
@@ -29,7 +31,7 @@ export function usePlanets(): UsePlanetsStructure {
             allPlanetsStorageKey
         ) as Array<PlanetInfo>;
 
-        if (localStoragePlanetData.length > 0 ) {
+        if (localStoragePlanetData.length > 0) {
             dispatcher(ac.loadAllActionCreatorPlanets(localStoragePlanetData));
             return;
         }
@@ -45,9 +47,29 @@ export function usePlanets(): UsePlanetsStructure {
 
     const handleRemovePlanet = useCallback(
         (id: PlanetInfo['id']) => {
-           
             dispatcher(ac.removePlanetActionCreatorPlanets(id));
             const newPlanets = allPlanets.filter((planet) => planet.id !== id);
+            persistDataLocalStorage(allPlanetsStorageKey, newPlanets);
+        },
+        [dispatcher, allPlanets]
+    );
+
+    const handleAddPlanet = useCallback(
+        (planet: PlanetInfo) => {
+            dispatcher(ac.addPlanetActionCreatorPlanets(planet));
+            const newPlanets = [...allPlanets, planet];
+            persistDataLocalStorage(allPlanetsStorageKey, newPlanets);
+        },
+        [dispatcher, allPlanets]
+    );
+
+    const handleUpdatePlanet = useCallback(
+        (planetPayload: PlanetInfo) => {
+            dispatcher(ac.updatePlanetActionCreatorPlanets(planetPayload));
+            const newPlanets = allPlanets.map((planet) =>
+                planet.id === planetPayload.id ? planetPayload : planet
+            );
+
             persistDataLocalStorage(allPlanetsStorageKey, newPlanets);
         },
         [dispatcher, allPlanets]
@@ -60,5 +82,7 @@ export function usePlanets(): UsePlanetsStructure {
     return {
         handleLoadAllPlanets,
         handleRemovePlanet,
+        handleAddPlanet,
+        handleUpdatePlanet,
     };
 }

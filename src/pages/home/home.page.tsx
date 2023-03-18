@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import { DetailsModal } from '../../components/details.modal/details.modal';
-
+import { PlanetFormModal } from '../../components/planet.form.modal/planet.form.modal';
 import { PlanetsList } from '../../components/planets.list/planets.list';
 import { usePlanets } from '../../hooks/use.planets';
 
 export function HomePage() {
     const { handleLoadAllPlanets } = usePlanets();
-    console.log('laod home page');
 
     useEffect(() => {
         handleLoadAllPlanets();
@@ -21,6 +20,7 @@ export function HomePage() {
 
             <PlanetsList></PlanetsList>
             <DetailsModal></DetailsModal>
+            <PlanetFormModal></PlanetFormModal>
         </>
     );
 }

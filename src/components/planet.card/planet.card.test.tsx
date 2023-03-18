@@ -52,4 +52,21 @@ describe('When render PlanetCard component', () => {
         const detailsModalState = store.getState().modals.isDetailsModalOpen;
         expect(detailsModalState).toBe(true);
     });
+
+    test('button edit  can be clicked', () => {
+        render(
+            <Provider store={store}>
+                <PlanetCard
+                    planet={mockPlanet}
+                    handleRemovePlanet={mockHandleRemovePlanet}
+                ></PlanetCard>
+            </Provider>
+        );
+
+        const buttonEdit = screen.getByRole('button', { name: 'Edit' });
+        fireEvent.click(buttonEdit);
+
+        const editModalState = store.getState().modals.isPlanetFormModalOpen;
+        expect(editModalState).toBe(true);
+    });
 });

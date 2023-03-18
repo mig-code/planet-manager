@@ -7,6 +7,7 @@ import './planets.list.scss';
 export function PlanetsList() {
     const planets = useSelector((state: RootState) => state.planets.allPlanets);
     const { handleRemovePlanet } = usePlanets();
+
     return (
         <>
             <h1>Planets List</h1>

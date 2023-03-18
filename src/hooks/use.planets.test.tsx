@@ -7,8 +7,11 @@ import { RootState, store } from '../store/store';
 import { usePlanets } from './use.planets';
 
 import * as debug from '../utils/debug';
-import { mockPlanet1 } from '../mocks/planets.mocks';
-
+import {
+    mockPlanet1,
+    mockPlanet1Updated,
+    mockPlanet2,
+} from '../mocks/planets.mocks';
 
 jest.mock('../utils/debug');
 
@@ -30,10 +33,17 @@ describe(`Given usePlanets custom hook and render with a virtual component`, () 
     let buttons: Array<HTMLElement>;
 
     const mockPlanet = mockPlanet1;
+    const mockUpdatedPlanet = mockPlanet1Updated;
+    const mockAddedPlanet = mockPlanet2;
 
     beforeEach(() => {
         TestComponent = () => {
-            const { handleLoadAllPlanets, handleRemovePlanet } = usePlanets();
+            const {
+                handleLoadAllPlanets,
+                handleRemovePlanet,
+                handleUpdatePlanet,
+                handleAddPlanet,
+            } = usePlanets();
             const { planets } = useSelector((state: RootState) => state);
             return (
                 <>
@@ -41,6 +51,15 @@ describe(`Given usePlanets custom hook and render with a virtual component`, () 
                     <button onClick={() => handleRemovePlanet(mockPlanet.id)}>
                         Remove
                     </button>
+                    <button
+                        onClick={() => handleUpdatePlanet(mockUpdatedPlanet)}
+                    >
+                        Update
+                    </button>
+                    <button onClick={() => handleAddPlanet(mockAddedPlanet)}>
+                        Add
+                    </button>
+
                     <div>{planets.allPlanets[0]?.name}</div>
                 </>
             );
@@ -52,9 +71,6 @@ describe(`Given usePlanets custom hook and render with a virtual component`, () 
             </Provider>
         );
         buttons = screen.getAllByRole('button');
-    });
-    afterEach(() => {
-        jest.clearAllMocks();
     });
 
     describe(`When load planets is not successful`, () => {
@@ -148,11 +164,82 @@ describe(`Given usePlanets custom hook and render with a virtual component`, () 
             });
         });
     });
+    describe(`When update planet is called`, () => {
+        beforeEach(() => {
+            jest.clearAllMocks();
+        });
+        test('if planet exists its updated', async () => {
+            mockGetDataLocalStorage.mockReturnValue([mockPlanet]);
+            await act(async () => {
+                userEvent.click(buttons[0]);
+            });
+
+            await act(async () => {
+                userEvent.click(buttons[2]);
+            });
+
+            await waitFor(() => {
+                expect(mockPersistDataLocalStorage).toHaveBeenCalled();
+            });
+
+            await waitFor(() => {
+                expect(store.getState().planets.allPlanets[0]?.name).toBe(
+                    mockUpdatedPlanet.name
+                );
+            });
+        });
+        test('if planet does not exists its not updated', async () => {
+            mockGetDataLocalStorage.mockReturnValue([mockPlanet2]);
+            await act(async () => {
+                userEvent.click(buttons[0]);
+            });
+
+            await act(async () => {
+                userEvent.click(buttons[2]);
+            });
+
+            await waitFor(() => {
+                expect(mockPersistDataLocalStorage).toHaveBeenCalled();
+            });
+
+            await waitFor(() => {
+                expect(store.getState().planets.allPlanets[0]?.name).toBe(
+                    mockPlanet2.name
+                );
+            });
+        });
+    });
+
+    describe(`When add planet is called`, () => {
+        beforeEach(() => {
+            mockGetDataLocalStorage.mockReturnValue([mockPlanet]);
+        });
+        test('Then a planet its added', async () => {
+            await act(async () => {
+                userEvent.click(buttons[0]);
+            });
+
+            await act(async () => {
+                userEvent.click(buttons[3]);
+            });
+
+            await waitFor(() => {
+                expect(mockPersistDataLocalStorage).toHaveBeenCalled();
+            });
+
+            await waitFor(() => {
+                expect(store.getState().planets.allPlanets[1]?.name).toBe(
+                    mockPlanet2.name
+                );
+            });
+        });
+    });
+
     describe(`When remove planet is called`, () => {
         beforeEach(() => {
             mockGetDataLocalStorage.mockReturnValue([mockPlanet]);
         });
-        test('Then the store its updated with local storage data', async () => {
+        test('Then a planet its deleted', async () => {
             await act(async () => {
                 userEvent.click(buttons[0]);
             });

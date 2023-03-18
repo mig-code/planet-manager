@@ -13,13 +13,17 @@ export function PlanetCard({
 }) {
     const dispatcher = useDispatch();
 
-    const handleRemoveClick = () => {
-        handleRemovePlanet(planet.id);
+    const handleViewDetailsClick = () => {
+        dispatcher(ac.setCurrentPlanetDetailsActionCreatorPlanets(planet));
+        dispatcher(ac.openDetailsModalActionCreatorModals());
+    };
+    const handleEditClick = () => {
+        dispatcher(ac.setCurrentPlanetEditableActionCreatorPlanets(planet));
+        dispatcher(ac.openPlanetFormModalActionCreatorModals());
     };
 
-    const handleViewDetailsClick = () => {
-        dispatcher(ac.setCurrentPlanetActionCreatorPlanets(planet));
-        dispatcher(ac.openDetailsModalActionCreatorModals());
+    const handleRemoveClick = () => {
+        handleRemovePlanet(planet.id);
     };
 
     return (
@@ -34,7 +38,7 @@ export function PlanetCard({
             </div>
             <div className="planet-card__actions">
                 <button onClick={handleViewDetailsClick}>View</button>
-                <button>Edit</button>
+                <button onClick={handleEditClick}>Edit</button>
                 <button onClick={handleRemoveClick}>Destroy</button>
             </div>
         </div>

@@ -12,9 +12,21 @@ export const removePlanetActionCreatorPlanets = createAction<PlanetInfo['id']>(
     actionTypesPlanets.removePlanet
 );
 
-export const setCurrentPlanetActionCreatorPlanets = createAction<PlanetInfo>(
-    actionTypesPlanets.setCurrentPlanet
+export const addPlanetActionCreatorPlanets = createAction<PlanetInfo>(
+    actionTypesPlanets.addPlanet
 );
+
+export const updatePlanetActionCreatorPlanets = createAction<PlanetInfo>(
+    actionTypesPlanets.updatePlanet
+);
+
+export const setCurrentPlanetDetailsActionCreatorPlanets =
+    createAction<PlanetInfo | null>(actionTypesPlanets.setCurrentDetailsPlanet);
+
+export const setCurrentPlanetEditableActionCreatorPlanets =
+    createAction<PlanetInfo | null>(
+        actionTypesPlanets.setCurrentEditablePlanet
+    );
 
 // Modals reducer action creators
 
@@ -24,4 +36,12 @@ export const openDetailsModalActionCreatorModals = createAction(
 
 export const closeDetailsModalActionCreatorModals = createAction(
     actionTypesModals.closeDetailsModal
+);
+
+export const openPlanetFormModalActionCreatorModals = createAction(
+    actionTypesModals.openPlanetFormModal
+);
+
+export const closePlanetFormModalActionCreatorModals = createAction(
+    actionTypesModals.closePlanetFormModal
 );

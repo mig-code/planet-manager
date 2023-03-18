@@ -5,4 +5,24 @@
     padding: 1rem;
     border-bottom: $color-grey-light-1 1px solid;
     background-color: $color-secondary;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    button {
+        margin: 0.5rem;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 0.6rem;
+        border-radius: 5px;
+        border: 1px solid $color-background;
+        background-color: $color-white;
+        color: $color-secondary;
+        &:hover {
+            cursor: pointer;
+            background-color: $color-background;
+            color: $color-white;
+        }
+    }
 }

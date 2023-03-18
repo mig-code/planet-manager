@@ -5,7 +5,7 @@ import './details.modal.scss';
 
 export function DetailsModal() {
     const currentPlanet = useSelector(
-        (state: RootState) => state.planets.currentPlanet
+        (state: RootState) => state.planets.currentPlanetDetails
     );
 
     const isDetailsModalOpen = useSelector(
