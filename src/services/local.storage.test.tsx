@@ -22,7 +22,7 @@ describe('Given local.storage functions', () => {
         });
         test('Web API function should be call', () => {
             const result = getDataLocalStorage<TestItem>('test');
-            expect(result).toEqual([]);
+            expect(result).toEqual(null);
             expect(Storage.prototype.getItem).toHaveBeenCalledWith('test');
         });
     });

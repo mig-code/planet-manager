@@ -77,7 +77,7 @@ describe(`Given usePlanets custom hook and render with a virtual component`, () 
         const spyConsole = jest.spyOn(debug, 'consoleDebug');
         beforeEach(() => {
             mockGetAllPlanets.mockRejectedValue(new Error('error test'));
-            mockGetDataLocalStorage.mockReturnValue([]);
+            mockGetDataLocalStorage.mockReturnValue(null);
         });
         test('Then its function getAllPlanets should be called and recieved an Error', async () => {
             await act(async () => {
@@ -107,7 +107,7 @@ describe(`Given usePlanets custom hook and render with a virtual component`, () 
                     name: 'planet name from api',
                 },
             ]);
-            mockGetDataLocalStorage.mockReturnValue([]);
+            mockGetDataLocalStorage.mockReturnValue(null);
         });
         test('Then its function getAllPlanets should be called and update the store', async () => {
             await act(async () => {
