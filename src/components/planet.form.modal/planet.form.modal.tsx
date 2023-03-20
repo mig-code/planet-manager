@@ -84,14 +84,29 @@ export function PlanetFormModal() {
             {isPlanetFormModalOpen && (
                 <div className="planet-form-modal">
                     <div className="planet-form-modal__content">
-                        <h2>{currentPlanet ? 'Edit' : 'Add'} Planet MODE</h2>
-                        <form onSubmit={handleSubmit}>
-                            <div>
-                                <label htmlFor="name">Name</label>
+                        <h2
+                            className="planet-form-modal__title"
+                            planet-form-modal__content
+                        >
+                            {currentPlanet ? 'Edit' : 'Add'} Planet
+                        </h2>
+                        <form
+                            className="planet-form-modal__form"
+                            onSubmit={handleSubmit}
+                        >
+                            <div className="planet-form-modal__item">
+                                <label
+                                    className="planet-form-modal__label"
+                                    htmlFor="name"
+                                >
+                                    Name
+                                </label>
                                 <input
                                     type="text"
                                     id="name"
                                     name="name"
+                                    className="planet-form-modal__input"
+                                    placeholder="Planet Name"
                                     defaultValue={currentPlanet?.name}
                                     maxLength={15}
                                     onInput={handleInputChange}
@@ -100,12 +115,19 @@ export function PlanetFormModal() {
                                 />
                             </div>
 
-                            <div>
-                                <label htmlFor="diameter">Diameter</label>
+                            <div className="planet-form-modal__item">
+                                <label
+                                    className="planet-form-modal__label"
+                                    htmlFor="diameter"
+                                >
+                                    Diameter
+                                </label>
                                 <input
                                     type="number"
                                     id="diameter"
                                     name="diameter"
+                                    className="planet-form-modal__input"
+                                    placeholder="Planet Diameter"
                                     min={0}
                                     defaultValue={currentPlanet?.diameter}
                                     onInput={handleInputChange}
@@ -114,12 +136,19 @@ export function PlanetFormModal() {
                                 />
                             </div>
 
-                            <div>
-                                <label htmlFor="population">Population</label>
+                            <div className="planet-form-modal__item">
+                                <label
+                                    className="planet-form-modal__label"
+                                    htmlFor="population"
+                                >
+                                    Population
+                                </label>
                                 <input
                                     type="number"
                                     id="population"
                                     name="population"
+                                    className="planet-form-modal__input"
+                                    placeholder="Planet Population"
                                     defaultValue={currentPlanet?.population}
                                     min={0}
                                     onInput={handleInputChange}
@@ -128,8 +157,10 @@ export function PlanetFormModal() {
                                 />
                             </div>
 
-                            <div>
-                                <p>TERRAINS</p>
+                            <div className="planet-form-modal__item">
+                                <p className="planet-form-modal__checkbox-title">
+                                    Terrains
+                                </p>
                                 <CheckboxInput
                                     options={terrains}
                                     checkedOptions={
@@ -144,8 +175,10 @@ export function PlanetFormModal() {
                                 />
                             </div>
 
-                            <div>
-                                <p>CLIMATES</p>
+                            <div className="planet-form-modal__item">
+                                <p className="planet-form-modal__checkbox-title">
+                                    Climates
+                                </p>
                                 <CheckboxInput
                                     options={climates}
                                     checkedOptions={
@@ -159,8 +192,10 @@ export function PlanetFormModal() {
                                     }}
                                 />
                             </div>
-                            <div>
-                                <p>RESIDENTS</p>
+                            <div className="planet-form-modal__item">
+                                <p className="planet-form-modal__checkbox-title">
+                                    Residents
+                                </p>
                                 <CheckboxInput
                                     options={residents}
                                     checkedOptions={
@@ -174,16 +209,27 @@ export function PlanetFormModal() {
                                     }}
                                 />
                             </div>
-
-                            {currentPlanet ? (
-                                <button type="submit">Edit</button>
-                            ) : (
-                                <button type="submit">Add</button>
-                            )}
+                            <div className="planet-form-modal__button-container">
+                                {currentPlanet ? (
+                                    <button
+                                        className="planet-form-modal__button-submit"
+                                        type="submit"
+                                    >
+                                        Save Changes
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="planet-form-modal__button-submit"
+                                        type="submit"
+                                    >
+                                        Add Planet
+                                    </button>
+                                )}
+                            </div>
                         </form>
                         <button
                             onClick={handleCloseModal}
-                            className="planet-form-modal__close-button"
+                            className="planet-form-modal__button-close"
                         >
                             x
                         </button>
