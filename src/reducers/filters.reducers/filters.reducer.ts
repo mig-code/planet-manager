@@ -8,7 +8,7 @@ export type FiltersState = {
 };
 
 const initialState: FiltersState = {
-    searchQuery: 'mig',
+    searchQuery: '',
     sortBy: 'latest-added',
 };
 

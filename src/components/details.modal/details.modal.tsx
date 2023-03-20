@@ -55,7 +55,7 @@ export function DetailsModal() {
                                 {currentPlanet.population}
                             </div>
                             <div className="details-modal__property-title">
-                                Habitants
+                                Residents
                             </div>
                             <div className="details-modal__property-value">
                                 {currentPlanet.residents.map(
