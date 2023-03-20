@@ -12,7 +12,9 @@ describe('When render Header component', () => {
             </Provider>
         );
 
-        const title = screen.getByRole('heading', { name: 'Planet Manager' });
+        const title = screen.getByRole('heading', {
+            name: 'Planet Manager System',
+        });
         expect(title).toBeInTheDocument();
     });
 

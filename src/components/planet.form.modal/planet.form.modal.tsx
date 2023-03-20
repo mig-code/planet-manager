@@ -25,7 +25,7 @@ export function PlanetFormModal() {
 
     const handleInputChange = (ev: SyntheticEvent) => {
         const element = ev.target as HTMLFormElement;
-        console.log('TypingSomething');
+
         if (element.name === 'diameter' || element.name === 'population') {
             setPlanetForm({
                 ...planetForm,

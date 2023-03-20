@@ -18,7 +18,7 @@ describe('When render PlanetCard component', () => {
             </Provider>
         );
 
-        const name = screen.getByRole('heading', { name: 'Tatooine' });
+        const name = screen.getByRole('heading', { name: 'TATOOINE' });
         expect(name).toBeInTheDocument();
     });
     test('button remove can be clicked', () => {
@@ -46,7 +46,7 @@ describe('When render PlanetCard component', () => {
             </Provider>
         );
 
-        const buttonDetails = screen.getByRole('button', { name: 'View' });
+        const buttonDetails = screen.getByRole('button', { name: 'Details' });
         fireEvent.click(buttonDetails);
 
         const detailsModalState = store.getState().modals.isDetailsModalOpen;
