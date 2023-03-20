@@ -7,12 +7,12 @@ export type FiltersState = {
     sortBy: string;
 };
 
-const initialState: FiltersState = {
+export const initialFiltersState: FiltersState = {
     searchQuery: '',
     sortBy: 'latest-added',
 };
 
-export const filtersReducer = createReducer(initialState, (builder) => {
+export const filtersReducer = createReducer(initialFiltersState, (builder) => {
     builder.addCase(ac.setSearchQueryActionCreatorFilters, (state, action) => {
         state.searchQuery = action.payload;
     });

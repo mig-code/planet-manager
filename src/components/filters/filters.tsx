@@ -39,6 +39,7 @@ export function Filters() {
                     id="filterBy"
                     value={filters.sortBy}
                     onInput={handleSortBy}
+                    placeholder="Sort by"
                 >
                     <option value="latest-added">Latest Added</option>
                     <option value="diameter-largest">Largest Diameter</option>

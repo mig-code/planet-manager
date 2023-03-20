@@ -6,10 +6,7 @@ const filteredByQuery = (planets: PlanetInfo[], query: string) => {
     });
 };
 
-export const filteredBySort = (
-    filteredByQuery: PlanetInfo[],
-    filter: string
-) => {
+const filteredBySort = (filteredByQuery: PlanetInfo[], filter: string) => {
     switch (filter) {
         case 'latest-added':
             return filteredByQuery.slice(0).reverse();

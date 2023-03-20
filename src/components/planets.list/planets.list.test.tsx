@@ -3,11 +3,11 @@ import { render, screen } from '@testing-library/react';
 import { PlanetsList } from './planets.list';
 import { Provider } from 'react-redux';
 
-import { mockPlanetsStore } from '../../mocks/store.mock';
+import { mockStoreListEmptyFilters } from '../../mocks/store.mock';
 
 describe('When render PlanetsList component', () => {
     test('It should render the list of planets', () => {
-        const mockStore = mockPlanetsStore;
+        const mockStore = mockStoreListEmptyFilters;
 
         render(
             <Provider store={mockStore}>

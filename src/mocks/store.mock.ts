@@ -6,6 +6,7 @@ import {
 import { configureStore } from '@reduxjs/toolkit';
 import { RootState } from '../store/store';
 import { modalsReducer } from '../reducers/modals.reducer/modals.reducer';
+import { filtersReducer } from '../reducers/filters.reducers/filters.reducer';
 
 export const mockPlanetsState: PlanetsState = {
     allPlanets: [mockPlanet1],
@@ -89,4 +90,23 @@ export const mockStoreEmptyPlanetFormModalTest = configureStore({
         modals: modalsReducer,
     },
     preloadedState: preloadedStateEmptyPlanetFormModalTest,
+});
+
+// Store for testing list
+
+export const preloadedStateListEmptyFilters: Partial<RootState> = {
+    planets: mockPlanetsState,
+
+    filters: {
+        searchQuery: '',
+        sortBy: '',
+    },
+};
+
+export const mockStoreListEmptyFilters = configureStore({
+    reducer: {
+        planets: planetsReducer,
+        filters: filtersReducer,
+    },
+    preloadedState: preloadedStateListEmptyFilters,
 });

@@ -1,12 +1,16 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { PlanetCard } from './planet.card';
-import { mockPlanet1 } from '../../mocks/planets.mocks';
+import {
+    mockPlanet1,
+    mockPlanetWithUnknownInfo,
+} from '../../mocks/planets.mocks';
 import { Provider } from 'react-redux';
 import { store } from '../../store/store';
 
 describe('When render PlanetCard component', () => {
     const mockPlanet = mockPlanet1;
+    const planetWithUnkonwnInfo = mockPlanetWithUnknownInfo;
     const mockHandleRemovePlanet = jest.fn();
     test('It should render the planet Name', () => {
         render(
@@ -68,5 +72,19 @@ describe('When render PlanetCard component', () => {
 
         const editModalState = store.getState().modals.isPlanetFormModalOpen;
         expect(editModalState).toBe(true);
+    });
+
+    test("When planet has unknown info, it should render 'Unknown' text", () => {
+        render(
+            <Provider store={store}>
+                <PlanetCard
+                    planet={planetWithUnkonwnInfo}
+                    handleRemovePlanet={mockHandleRemovePlanet}
+                ></PlanetCard>
+            </Provider>
+        );
+
+        const unknownText = screen.getByText('unknown');
+        expect(unknownText).toBeInTheDocument();
     });
 });
