@@ -12,9 +12,9 @@ export function Header() {
     };
     return (
         <header className="app-header">
-            <h1 className="app-header__title">Planet Manager System</h1>
+            <h1 className="app-header__title">Planet Manager</h1>
             <button className="app-header__button" onClick={handleAddClick}>
-                Add your Planet
+                Add Planet
             </button>
         </header>
     );

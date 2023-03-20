@@ -20,7 +20,7 @@ export function PlanetsList() {
     return (
         <>
             <h4 className="planets-list__title">
-                Remaining Planets {planets.length}
+                Discovered Planets {planets.length}
             </h4>
             <div className="planets-list">
                 {filteredPlanets.map((planet) => (

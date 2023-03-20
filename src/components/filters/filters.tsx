@@ -5,7 +5,6 @@ import * as ac from '../../reducers/action.creator';
 
 import './filters.scss';
 
-
 export function Filters() {
     const { filters } = useSelector((state: RootState) => state);
     const dispatcher = useDispatch();
@@ -25,6 +24,7 @@ export function Filters() {
             <div className="filters-container__search-box">
                 <label htmlFor="search"></label>
                 <input
+                    className="filters-container__search-box__input"
                     type="text"
                     name="search"
                     id="search"
@@ -35,6 +35,7 @@ export function Filters() {
             </div>
             <div className="filters-container__sort-by">
                 <select
+                    className="filters-container__sort-by__select"
                     name="sortBy"
                     id="filterBy"
                     value={filters.sortBy}

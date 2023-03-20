@@ -13,7 +13,7 @@ describe('When render Header component', () => {
         );
 
         const title = screen.getByRole('heading', {
-            name: 'Planet Manager System',
+            name: 'Planet Manager',
         });
         expect(title).toBeInTheDocument();
     });
@@ -25,7 +25,7 @@ describe('When render Header component', () => {
             </Provider>
         );
 
-        const button = screen.getByRole('button', { name: 'Add your Planet' });
+        const button = screen.getByRole('button', { name: 'Add Planet' });
         expect(button).toBeInTheDocument();
 
         fireEvent.click(button);

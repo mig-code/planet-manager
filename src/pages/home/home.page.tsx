@@ -16,7 +16,7 @@ export function HomePage() {
     return (
         <>
             <h2 className="home-page__title">
-                The ultimate Star Wars app for managing your planets
+                The app for managing your planets
             </h2>
             <Filters></Filters>
 
