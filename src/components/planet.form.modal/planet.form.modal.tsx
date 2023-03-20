@@ -93,6 +93,7 @@ export function PlanetFormModal() {
                                     id="name"
                                     name="name"
                                     defaultValue={currentPlanet?.name}
+                                    maxLength={15}
                                     onInput={handleInputChange}
                                     data-testid="planetNameInput"
                                     required

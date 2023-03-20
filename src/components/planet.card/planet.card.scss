@@ -5,49 +5,83 @@
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
 
     margin: 1rem 0.5rem;
     padding: 1rem;
-    width: 200px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
 
     border-radius: 10px;
-    border: 1px solid $color-secondary;
+    border: 2px solid $color-white;
+
+    &__name {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
 
     &__info {
         color: $color-secondary;
         font-size: 0.8rem;
+        width: 100%;
+        margin: 0.5rem 0;
+        color: $color-white;
+        text-transform: capitalize;
+        &-truncate {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1; /* number of lines to show */
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
     }
+
+    &__property {
+        font-family: $font-stack-primary;
+        font-size: 1rem;
+        color: $color-secondary;
+    }
+
     &__actions {
         display: flex;
         flex-direction: row;
         align-items: center;
+
         justify-content: space-around;
         width: 100%;
+    }
+    &__button {
+        margin: 0.5rem;
+        font-size: 0.9rem;
 
-        button {
-            margin: 0.5rem;
-            font-size: 0.8rem;
-            font-weight: bold;
-            padding: 0.3rem;
-            border-radius: 5px;
-            border: 1px solid $color-secondary;
-            background-color: $color-white;
-            color: $color-secondary;
-            &:hover {
-                cursor: pointer;
-                background-color: $color-secondary;
-                color: $color-white;
-            }
+        padding: 0.3rem 0.5rem;
+        border-radius: 5px;
+        border: 1px solid $color-white;
+        background-color: $color-background;
+        color: $color-white;
+        box-shadow: 0 0 1px 0 $color-white;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            cursor: pointer;
+            background-color: $color-secondary;
+            color: $color-white;
         }
     }
 }
 
 @media (max-width: 768px) {
     .planet-card {
-        width: 150px;
-        height: 262.5px;
+        width: 270px;
+        height: 270px;
+       
+        &__name {
+            font-size: 1.5rem;
+        }
+        &__button {
+            font-size: 0.8rem;
+        }
     }
 }
