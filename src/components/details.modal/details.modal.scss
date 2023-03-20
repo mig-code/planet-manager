@@ -14,10 +14,10 @@
 
     &__content {
         background-color: $color-white-light-1;
-        margin: 40% auto;
+        margin: 5% auto;
         padding: 1rem;
         border: 2px solid $color-primary;
-        width: 70%;
+        width: 40%;
 
         border-radius: 15px;
 
@@ -37,10 +37,24 @@
         padding: 1rem;
     }
     &__title {
-        font-size: 1.5rem;
+        font-size: 2rem;
         font-weight: 600;
-        margin-bottom: 1rem;
+
         color: $color-black-light-1;
+        text-transform: uppercase;
+    }
+
+    &__property-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-top: 0.5rem;
+        color: $color-primary;
+    }
+
+    &__property-value {
+        font-size: 1rem;
+        text-transform: capitalize;
+        word-spacing: 0.4rem;
     }
     &__close-button {
         position: absolute;
@@ -60,11 +74,11 @@
     }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .details-modal {
         &__content {
             margin: 10% auto;
-            width: 30%;
+            width: 80%;
         }
     }
 }

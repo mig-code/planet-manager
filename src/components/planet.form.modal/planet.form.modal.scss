@@ -19,9 +19,7 @@
         padding: 1rem;
         border: 2px solid $color-primary;
         width: 70%;
-
         border-radius: 15px;
-
         position: relative;
         display: flex;
         flex-direction: column;
@@ -104,7 +102,7 @@
 @media (max-width: 768px) {
     .planet-form-modal {
         &__content {
-            margin: 5% auto;
+            margin: 10% auto;
             width: 80%;
         }
     }

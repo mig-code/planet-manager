@@ -84,11 +84,8 @@ export function PlanetFormModal() {
             {isPlanetFormModalOpen && (
                 <div className="planet-form-modal">
                     <div className="planet-form-modal__content">
-                        <h2
-                            className="planet-form-modal__title"
-                            planet-form-modal__content
-                        >
-                            {currentPlanet ? 'Edit' : 'Add'} Planet
+                        <h2 className="planet-form-modal__title">
+                            {currentPlanet?.id ? 'Edit' : 'Add'} Planet
                         </h2>
                         <form
                             className="planet-form-modal__form"
