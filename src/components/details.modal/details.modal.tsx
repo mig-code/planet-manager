@@ -26,24 +26,42 @@ export function DetailsModal() {
                             <h2 className="details-modal__title">
                                 {currentPlanet.name}
                             </h2>
-                            <p>Diameter {currentPlanet.diameter} km</p>
-                            <p>
-                                Climate{' '}
+                            <div className="details-modal__property-title">
+                                Diameter
+                            </div>
+                            <div className="details-modal__property-value">
+                                {currentPlanet.diameter}km
+                            </div>
+                            <div className="details-modal__property-title">
+                                Climate
+                            </div>
+                            <div className="details-modal__property-value">
                                 {currentPlanet.climates.map(
                                     (climate) => `${climate} `
                                 )}
-                            </p>
-                            <p>
-                                Terrain{' '}
+                            </div>
+                            <div className="details-modal__property-title">
+                                Terrain
+                            </div>
+                            <div className="details-modal__property-value">
                                 {currentPlanet.terrains.map(
                                     (terrain) => `${terrain} `
                                 )}
-                            </p>
-                            <p>Population {currentPlanet.population}</p>
-                            Habitants{' '}
-                            {currentPlanet.residents.map(
-                                (resident) => `${resident} `
-                            )}
+                            </div>
+                            <div className="details-modal__property-title">
+                                Population
+                            </div>
+                            <div className="details-modal__property-value">
+                                {currentPlanet.population}
+                            </div>
+                            <div className="details-modal__property-title">
+                                Habitants
+                            </div>
+                            <div className="details-modal__property-value">
+                                {currentPlanet.residents.map(
+                                    (resident) => `${resident} `
+                                )}
+                            </div>
                         </div>
                         <button
                             onClick={handleCloseModal}

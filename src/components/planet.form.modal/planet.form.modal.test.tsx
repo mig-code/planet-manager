@@ -30,24 +30,24 @@ describe('When render PlanetFormModal', () => {
         });
 
         test('Edit Mode should be on', () => {
-            const editMode = screen.getByText('Edit');
+            const editMode = screen.getByText('Edit Planet');
             expect(editMode).toBeInTheDocument();
         });
 
         test('Form can be updated', async () => {
             const planetNameInput = screen.getByTestId('planetNameInput');
             const submitButton = screen.getByRole('button', {
-                name: 'Edit',
+                name: 'Save Changes',
             });
 
             expect(planetNameInput).toBeInTheDocument();
 
             act(() => {
-                userEvent.type(planetNameInput, 'New Name');
+                userEvent.type(planetNameInput, ' Update');
             });
 
             await waitFor(() => {
-                expect(planetNameInput).toHaveValue('TatooineNew Name');
+                expect(planetNameInput).toHaveValue('Tatooine Update');
             });
 
             fireEvent.click(submitButton);
@@ -68,7 +68,9 @@ describe('When render PlanetFormModal', () => {
         });
 
         test('Add Mode should be on', () => {
-            const addMode = screen.getByText('Add');
+            const addMode = screen.getByRole('heading', {
+                name: 'Add Planet',
+            });
             expect(addMode).toBeInTheDocument();
         });
 
@@ -123,7 +125,7 @@ describe('When render PlanetFormModal', () => {
             fireEvent.click(planetResidentCheckBox);
 
             const submitButton = screen.getByRole('button', {
-                name: 'Add',
+                name: 'Add Planet',
             });
 
             fireEvent.click(submitButton);

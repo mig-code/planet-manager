@@ -19,7 +19,7 @@ describe('When render Home page component', () => {
             </Provider>
         );
 
-        const planetsListTitle = screen.getByText('Planets List');
+        const planetsListTitle = screen.getByText('Remaining Planets 0');
         expect(planetsListTitle).toBeInTheDocument();
 
         expect(mockHandleLoadAllPlanets).toHaveBeenCalled();

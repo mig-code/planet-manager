@@ -19,7 +19,7 @@ describe('When render DetailsModal component', () => {
         expect(name).toBeInTheDocument();
 
         const habitants = screen.getByText(
-            'Habitants Luke Skywalker C-3PO R2-D2 Darth Vader'
+            'Luke Skywalker C-3PO R2-D2 Darth Vader'
         );
         expect(habitants).toBeInTheDocument();
     });

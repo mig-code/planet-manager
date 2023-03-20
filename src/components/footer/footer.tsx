@@ -5,9 +5,7 @@ export function Footer() {
         <footer className="app-footer">
             <p>
                 Made with ❤️ by{' '}
-                <a href="https://github.com/mig-code/teachers-marketplace">
-                    Miguel PGómez
-                </a>
+                <a href="https://github.com/mig-code">Miguel PGómez</a>
             </p>
         </footer>
     );

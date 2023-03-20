@@ -2,14 +2,21 @@
 
 .planets-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
     justify-items: center;
     margin: 0.5rem;
     padding: 0;
+    &__title {
+        font-family: $font-stack-secondary;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: $color-white;
+        margin: 0.5rem;
+    }
 }
 
 @media (max-width: 768px) {
     .planets-list {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
     }
 }

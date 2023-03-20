@@ -15,7 +15,7 @@ describe('When render PlanetsList component', () => {
             </Provider>
         );
 
-        const mockPlanetName = screen.getByText('Tatooine');
+        const mockPlanetName = screen.getByText('TATOOINE');
         expect(mockPlanetName).toBeInTheDocument();
     });
 });
