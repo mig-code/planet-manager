@@ -1,6 +1,10 @@
 import { PlanetInfo } from './../types/planet';
 import { createAction } from '@reduxjs/toolkit';
-import { actionTypesPlanets, actionTypesModals } from './action.types';
+import {
+    actionTypesPlanets,
+    actionTypesModals,
+    actionTypesFilters,
+} from './action.types';
 
 // Planets reducer action creators
 
@@ -44,4 +48,14 @@ export const openPlanetFormModalActionCreatorModals = createAction(
 
 export const closePlanetFormModalActionCreatorModals = createAction(
     actionTypesModals.closePlanetFormModal
+);
+
+// Filters reducer action creators
+
+export const setSearchQueryActionCreatorFilters = createAction<string>(
+    actionTypesFilters.setSearchQuery
+);
+
+export const setSortByActionCreatorFilters = createAction<string>(
+    actionTypesFilters.setSortBy
 );
