@@ -3,9 +3,14 @@ import './footer.scss';
 export function Footer() {
     return (
         <footer className="app-footer">
-            <p>
+            <p className="app-footer__text">
                 Made with ❤️ by{' '}
-                <a href="https://github.com/mig-code">Miguel PGómez</a>
+                <a
+                    className="app-footer__link"
+                    href="https://github.com/mig-code"
+                >
+                    Miguel PGómez
+                </a>
             </p>
         </footer>
     );

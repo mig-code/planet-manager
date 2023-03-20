@@ -28,6 +28,15 @@ export const mockPlanet2: PlanetInfo = {
     diameter: 12500,
     residents: ['Leia Organa', 'Bail Prestor Organa', 'Raymus Antilles'],
 };
+export const mockPlanetWithUnknownInfo: PlanetInfo = {
+    id: '3',
+    name: 'Unknown',
+    population: 0,
+    terrains: [],
+    climates: [],
+    diameter: 0,
+    residents: [],
+};
 export const mockPlanets: Array<PlanetInfo> = [mockPlanet1, mockPlanet2];
 
 export const mockApiPlanet1: ApiPlanetInfo = {

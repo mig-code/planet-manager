@@ -13,3 +13,8 @@ export const actionTypesModals = {
     openPlanetFormModal: 'modals@openPlanetFormModal',
     closePlanetFormModal: 'modals@closePlanetFormModal',
 };
+
+export const actionTypesFilters = {
+    setSearchQuery: 'filters@setSearchQuery',
+    setSortBy: 'filters@setSortBy',
+};

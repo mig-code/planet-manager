@@ -32,25 +32,23 @@ export function PlanetCard({
 
             <div className="planet-card__info">
                 <p>
-                    <span className="planet-card__property">Diameter:</span>{' '}
+                    <span className="planet-card__property">Diameter: </span>
                     {planet.diameter ? planet.diameter : 'unknown'} km
                 </p>
                 <p className="planet-card__info-truncate">
-                    {' '}
-                    <span className="planet-card__property">Terrain:</span>{' '}
+                    <span className="planet-card__property">Terrain: </span>
                     {planet.terrains.map((terrain) => `${terrain} `)}
                 </p>
                 <p className="planet-card__info-truncate">
                     {' '}
-                    <span className="planet-card__property">Climate:</span>{' '}
+                    <span className="planet-card__property">
+                        Climate:{' '}
+                    </span>{' '}
                     {planet.climates.map((climate) => `${climate} `)}
                 </p>
 
                 <p>
-                    {' '}
-                    <span className="planet-card__property">
-                        Population:
-                    </span>{' '}
+                    <span className="planet-card__property">Population: </span>
                     {planet.population ? planet.population : 'unknown'}
                 </p>
             </div>
