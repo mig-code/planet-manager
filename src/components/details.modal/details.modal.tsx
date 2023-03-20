@@ -52,9 +52,7 @@ export function DetailsModal() {
                                 Population
                             </div>
                             <div className="details-modal__property-value">
-                                {currentPlanet.population
-                                    ? currentPlanet.population
-                                    : 'unknown'}
+                                {currentPlanet.population}
                             </div>
                             <div className="details-modal__property-title">
                                 Habitants
