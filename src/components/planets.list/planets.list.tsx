@@ -10,8 +10,9 @@ export function PlanetsList() {
 
     return (
         <>
-            <h1>Planets List</h1>
-            <p>Remaining Planets {planets.length}</p>
+            <h4 className="planets-list__title">
+                Remaining Planets {planets.length}
+            </h4>
             <div className="planets-list">
                 {planets.map((planet) => (
                     <PlanetCard

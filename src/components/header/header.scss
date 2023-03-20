@@ -10,7 +10,12 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    button {
+    &__title {
+        font-size: 2rem;
+        font-weight: bold;
+        color: $color-white;
+    }
+    &__button {
         margin: 0.5rem;
         font-size: 1rem;
         font-weight: bold;
@@ -18,11 +23,26 @@
         border-radius: 5px;
         border: 1px solid $color-background;
         background-color: $color-white;
-        color: $color-secondary;
+        color: $color-background;
+        transition: all 0.2s ease-in-out;
         &:hover {
             cursor: pointer;
             background-color: $color-background;
             color: $color-white;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .app-header {
+        &__title {
+            font-size: 1.3rem;
+        }
+        &__button {
+            margin: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 0.4rem;
         }
     }
 }

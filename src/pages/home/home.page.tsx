@@ -3,6 +3,7 @@ import { DetailsModal } from '../../components/details.modal/details.modal';
 import { PlanetFormModal } from '../../components/planet.form.modal/planet.form.modal';
 import { PlanetsList } from '../../components/planets.list/planets.list';
 import { usePlanets } from '../../hooks/use.planets';
+import './home.page.scss';
 
 export function HomePage() {
     const { handleLoadAllPlanets } = usePlanets();
@@ -13,10 +14,9 @@ export function HomePage() {
 
     return (
         <>
-            <p>
-                The ultimate Star Wars app for managing your own planet,
-                building infrastructure, and defending against invaders.
-            </p>
+            <h2 className="home-page__title">
+                The ultimate Star Wars app for managing your planets
+            </h2>
 
             <PlanetsList></PlanetsList>
             <DetailsModal></DetailsModal>
