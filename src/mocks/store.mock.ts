@@ -103,10 +103,27 @@ export const preloadedStateListEmptyFilters: Partial<RootState> = {
     },
 };
 
+export const preloadedStateListWithWrongQuery: Partial<RootState> = {
+    planets: mockPlanetsState,
+
+    filters: {
+        searchQuery: 'wrong query',
+        sortBy: '',
+    },
+};
+
 export const mockStoreListEmptyFilters = configureStore({
     reducer: {
         planets: planetsReducer,
         filters: filtersReducer,
     },
     preloadedState: preloadedStateListEmptyFilters,
+});
+
+export const mockStoreListWithWrongQuery = configureStore({
+    reducer: {
+        planets: planetsReducer,
+        filters: filtersReducer,
+    },
+    preloadedState: preloadedStateListWithWrongQuery,
 });

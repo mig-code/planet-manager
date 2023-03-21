@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { usePlanets } from '../../hooks/use.planets';
 import { RootState } from '../../store/store';
 
 import { filterPlanetsByQueryAndSort } from '../../utils/planet.filters';
+import { Pagination } from '../pagination/pagination';
 import { PlanetCard } from '../planet.card/planet.card';
 import './planets.list.scss';
 
@@ -17,13 +19,24 @@ export function PlanetsList() {
         filters.sortBy
     );
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const planetsPerPage = 10;
+    const totalpages = Math.ceil(filteredPlanets.length / planetsPerPage);
+    const paginatedPlanets = filteredPlanets.slice(
+        (currentPage - 1) * planetsPerPage,
+        currentPage * planetsPerPage
+    );
+
     return (
         <>
-            <h4 className="planets-list__title">
-                Discovered Planets {planets.length}
-            </h4>
+            {filteredPlanets.length === 0 && planets.length > 0 && (
+                <p className="planets-list__no-results">
+                    No results found for your search
+                </p>
+            )}
+
             <div className="planets-list">
-                {filteredPlanets.map((planet) => (
+                {paginatedPlanets.map((planet) => (
                     <PlanetCard
                         key={planet.id}
                         planet={planet}
@@ -31,6 +44,14 @@ export function PlanetsList() {
                     ></PlanetCard>
                 ))}
             </div>
+            {filteredPlanets.length > 0 && (
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalpages}
+                    planetsInCurrentPage={paginatedPlanets.length}
+                    setCurrentPage={setCurrentPage}
+                ></Pagination>
+            )}
         </>
     );
 }
