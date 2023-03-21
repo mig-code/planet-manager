@@ -44,7 +44,7 @@ export function PlanetsList() {
                     ></PlanetCard>
                 ))}
             </div>
-            {paginatedPlanets.length >= 0 && filteredPlanets.length > 0 && (
+            {filteredPlanets.length > 0 && (
                 <Pagination
                     currentPage={currentPage}
                     totalPages={totalpages}
