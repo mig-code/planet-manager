@@ -1,46 +1,79 @@
-# Getting Started with Create React App
+# Planet Manager System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+This project is a simple application for managing planets, built with React
 
-## Available Scripts
+Deploy : https://planet-manager.netlify.app/
 
-In the project directory, you can run:
+## Work Methodology
 
-### `npm start`
+I use Trello to manage project tasks, Netlify for deployment, and SonarCloud for code quality.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technical Design Decisions
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The main challenge was deciding how to work with the data. Since the model was read-only, I chose to make a single API call and work with the data locally using Redux and localStorage for persistence. In my opinion, this approach is the most suitable because it allows for cleaner and more testable code.
 
-### `npm test`
+## Development Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   Front-end: React, Redux, TypeScript, Sass
+-   Testing: Jest
+-   Version control: Git with https://gitmoji.dev/ for commit history
+-   CI/CD: Github Actions
+-   API: https://studio.apollographql.com/public/star-wars-swapi/variant/current/home
 
-### `npm run build`
+## Future Development
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   Improve generate Id for new planets
+-   Dockerize the app for easier deployment
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Before installing the project, you should have Node.js and npm installed on your system.
 
-### `npm run eject`
+To install the project, follow these steps:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1.  Clone the project to your local machine:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+        git clone https://github.com/mig-code/planet-manager.git
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2.  Navigate into the project directory:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+        cd planet-manager
 
-## Learn More
+3.  Install the project dependencies:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+        npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Running the App
+
+To run the app, execute the following command:
+
+    npm run start
+
+This will start the app in development mode on your local machine. You can access the app by navigating to http://localhost:3000 in your web browser.
+Testing
+
+## Testing
+
+To run the tests for the project, execute the following command:
+
+    npm run test
+
+This will run the tests in watch mode and collect coverage information.
+
+To run the tests in production mode, execute the following command:
+
+    npm run test:prod
+
+This will run the tests once and collect coverage information.
+
+## Build
+
+To build the app for production, execute the following command:
+
+    npm run build
+
+This will create a production build of the app in the build directory.
+
+## License
+
+This project is licensed under the MIT License
