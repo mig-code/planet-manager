@@ -6,6 +6,7 @@ import { PlanetInfo } from '../../types/planet';
 import { SyntheticEvent, useEffect, useState } from 'react';
 import { CheckboxInput } from '../checkbox.input/checkbox.input';
 import { climates, residents, terrains } from '../../models/planets.models';
+import { usePlanets } from '../../hooks/use.planets';
 
 export function PlanetFormModal() {
     const currentPlanet = useSelector(
@@ -14,6 +15,8 @@ export function PlanetFormModal() {
     const isPlanetFormModalOpen = useSelector(
         (state: RootState) => state.modals.isPlanetFormModalOpen
     );
+
+    const { handleAddPlanet, handleUpdatePlanet } = usePlanets();
 
     const [planetForm, setPlanetForm] = useState({} as Partial<PlanetInfo>);
 
@@ -42,24 +45,21 @@ export function PlanetFormModal() {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (currentPlanet) {
-            dispatcher(
-                ac.updatePlanetActionCreatorPlanets({
-                    ...currentPlanet,
-                    ...planetForm,
-                })
-            );
+            handleUpdatePlanet({
+                ...currentPlanet,
+                ...planetForm,
+            });
         } else {
             const planetFormWithId: PlanetInfo = {
-                name: planetForm.name as string,
-                diameter: planetForm.diameter as number,
-                population: planetForm.population as number,
                 id: Math.random().toString(36).substr(2, 9),
-
-                climates: planetForm.climates as string[],
-                residents: planetForm.residents as string[],
+                name: planetForm.name as string,
+                population: planetForm.population as number,
                 terrains: planetForm.terrains as string[],
+                climates: planetForm.climates as string[],
+                diameter: planetForm.diameter as number,
+                residents: planetForm.residents as string[],
             };
-            dispatcher(ac.addPlanetActionCreatorPlanets(planetFormWithId));
+            handleAddPlanet(planetFormWithId);
         }
 
         handleCloseModal();

@@ -18,10 +18,21 @@ import {
 } from '../../mocks/store.mock';
 import userEvent from '@testing-library/user-event';
 
+import { usePlanets } from '../../hooks/use.planets';
+
+
+jest.mock('../../hooks/use.planets');
+const mockHandleUpdatePlanet = jest.fn();
+const mockHandleAddPlanet = jest.fn();
+
 describe('When render PlanetFormModal', () => {
     describe('isPlanetFormModalOpen is true with a Planet', () => {
         const mockStoreWithPlanet = mockStorePlanetFormModalTest;
+
         beforeEach(() => {
+            (usePlanets as jest.Mock).mockReturnValue({
+                handleUpdatePlanet: mockHandleUpdatePlanet,
+            });
             render(
                 <Provider store={mockStoreWithPlanet}>
                     <PlanetFormModal></PlanetFormModal>
@@ -52,6 +63,8 @@ describe('When render PlanetFormModal', () => {
 
             fireEvent.click(submitButton);
 
+            expect(mockHandleUpdatePlanet).toHaveBeenCalled();
+
             const isFormModalOpen =
                 mockStoreWithPlanet.getState().modals.isPlanetFormModalOpen;
             expect(isFormModalOpen).toBe(false);
@@ -60,6 +73,9 @@ describe('When render PlanetFormModal', () => {
     describe('isPlanetFormModalOpen is true without a Planet', () => {
         const mockStoreWithoutPlanet = mockStoreEmptyPlanetFormModalTest;
         beforeEach(() => {
+            (usePlanets as jest.Mock).mockReturnValue({
+                handleAddPlanet: mockHandleAddPlanet,
+            });
             render(
                 <Provider store={mockStoreWithoutPlanet}>
                     <PlanetFormModal></PlanetFormModal>
@@ -129,6 +145,8 @@ describe('When render PlanetFormModal', () => {
             });
 
             fireEvent.click(submitButton);
+
+            expect(mockHandleAddPlanet).toHaveBeenCalled();
 
             const isFormModalOpen =
                 mockStoreWithoutPlanet.getState().modals.isPlanetFormModalOpen;
